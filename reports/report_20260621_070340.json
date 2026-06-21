@@ -1,0 +1,76 @@
+{
+  "report_id": "20260621_070340",
+  "generated_at": "2026-06-21T07:03:40.368854",
+  "summary": {
+    "coverage_percentage": 100.0,
+    "grade": "A \u2014 Excellent",
+    "total_techniques_tested": 5,
+    "detected": 5,
+    "missed": 0
+  },
+  "tactic_coverage": {
+    "Credential Access": 100.0,
+    "Discovery": 100.0,
+    "Persistence": 100.0,
+    "Defense Evasion": 100.0,
+    "Initial Access": 100.0
+  },
+  "gaps": [],
+  "results": [
+    {
+      "technique_id": "T1110",
+      "technique_name": "Brute Force",
+      "tactic": "Credential Access",
+      "detected": true,
+      "score": 7,
+      "rule_triggered": "SSH brute force attempt detected",
+      "simulation_output": "Failed login attempt 1 for user root from 10.0.0.1\nFailed login attempt 2 for user root from 10.0.0.2\nFailed login attempt 3 for user root from 10.0.0.3\nFailed login attempt 4 for user root from 10.0.0.4\nFailed login attempt 5 for user root from 10.0.0.5",
+      "timestamp": "2026-06-21T07:03:23.319089",
+      "notes": "Wazuh integrated"
+    },
+    {
+      "technique_id": "T1046",
+      "technique_name": "Network Service Scanning",
+      "tactic": "Discovery",
+      "detected": true,
+      "score": 8,
+      "rule_triggered": "Port scanning activity",
+      "simulation_output": "Starting Nmap 7.80 ( https://nmap.org ) at 2026-06-21 07:03 PDT\nNmap scan report for localhost (127.0.0.1)\nHost is up (0.00034s latency).\n\nPORT     STATE  SERVICE\n22/tcp   open   ssh\n80/tcp   open   http\n443/tcp  closed https\n3306/tcp open   mysql\n\nNmap done: 1 IP address (1 host up) scanned in 0.02 seconds\n",
+      "timestamp": "2026-06-21T07:03:27.355867",
+      "notes": "Wazuh integrated"
+    },
+    {
+      "technique_id": "T1053",
+      "technique_name": "Scheduled Task",
+      "tactic": "Persistence",
+      "detected": true,
+      "score": 10,
+      "rule_triggered": "Crontab modification detected",
+      "simulation_output": "Suspicious cron entry written to /tmp/tmp0c0pm7ke:\n*/5 * * * * /tmp/.hidden_payload.sh",
+      "timestamp": "2026-06-21T07:03:31.359840",
+      "notes": "Wazuh integrated"
+    },
+    {
+      "technique_id": "T1070",
+      "technique_name": "Indicator Removal",
+      "tactic": "Defense Evasion",
+      "detected": true,
+      "score": 10,
+      "rule_triggered": "Audit logs deleted",
+      "simulation_output": "Log file truncated: 270 bytes \u2192 0 bytes",
+      "timestamp": "2026-06-21T07:03:35.363661",
+      "notes": "Wazuh integrated"
+    },
+    {
+      "technique_id": "T1078",
+      "technique_name": "Valid Accounts",
+      "tactic": "Initial Access",
+      "detected": true,
+      "score": 10,
+      "rule_triggered": "Login from unusual location",
+      "simulation_output": "Login attempt at 07:03:36 (BUSINESS HOURS) from IP 185.220.101.45 (Tor exit node)",
+      "timestamp": "2026-06-21T07:03:39.367762",
+      "notes": "Wazuh integrated"
+    }
+  ]
+}

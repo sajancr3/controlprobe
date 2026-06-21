@@ -1,0 +1,196 @@
+{
+  "report_id": "20260621_072624",
+  "generated_at": "2026-06-21T07:26:24.843504",
+  "summary": {
+    "coverage_percentage": 66.7,
+    "grade": "C \u2014 Needs Improvement",
+    "total_techniques_tested": 15,
+    "detected": 10,
+    "missed": 5
+  },
+  "tactic_coverage": {
+    "Credential Access": 100.0,
+    "Discovery": 50.0,
+    "Persistence": 0.0,
+    "Defense Evasion": 75.0,
+    "Initial Access": 100.0,
+    "Execution": 100.0,
+    "Command & Control": 0.0,
+    "Lateral Movement": 100.0,
+    "Exfiltration": 100.0
+  },
+  "gaps": [
+    "T1046 \u2014 Network Service Scanning",
+    "T1053 \u2014 Scheduled Task",
+    "T1070 \u2014 Indicator Removal",
+    "T1105 \u2014 Ingress Tool Transfer",
+    "T1057 \u2014 Process Discovery"
+  ],
+  "results": [
+    {
+      "technique_id": "T1110",
+      "technique_name": "Brute Force",
+      "tactic": "Credential Access",
+      "detected": true,
+      "score": 8,
+      "rule_triggered": "Multiple authentication failures",
+      "simulation_output": "5 failed SSH logins from attacker\nIP: 185.220.101.45 | Score: 100/100 | Country: DE | ISP: Network for Tor-Exit traffic. | Threat: CRITICAL | Reports: 126",
+      "timestamp": "2026-06-21T07:25:31.180369",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1046",
+      "technique_name": "Network Service Scanning",
+      "tactic": "Discovery",
+      "detected": false,
+      "score": 0,
+      "rule_triggered": "Network reconnaissance detected",
+      "simulation_output": "Port scan on 22,80,443,3306 from attacker\nIP: 89.248.167.131 | Score: 100/100 | Country: NL | ISP: FiberXpress BV | Threat: CRITICAL | Reports: 6614",
+      "timestamp": "2026-06-21T07:25:34.916637",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1053",
+      "technique_name": "Scheduled Task",
+      "tactic": "Persistence",
+      "detected": false,
+      "score": 0,
+      "rule_triggered": "Scheduled task created",
+      "simulation_output": "Malicious cron entry simulated:\n*/5 * * * * /tmp/.hidden_payload.sh",
+      "timestamp": "2026-06-21T07:25:38.418985",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1070",
+      "technique_name": "Indicator Removal",
+      "tactic": "Defense Evasion",
+      "detected": false,
+      "score": 0,
+      "rule_triggered": "Log file cleared",
+      "simulation_output": "Log truncated: 100 bytes \u2192 0 bytes",
+      "timestamp": "2026-06-21T07:25:41.933058",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1078",
+      "technique_name": "Valid Accounts",
+      "tactic": "Initial Access",
+      "detected": true,
+      "score": 10,
+      "rule_triggered": "Login from unusual location",
+      "simulation_output": "Login at 07:25:44 (BUSINESS HOURS)\nIP: 45.153.160.2 | Score: 0/100 | Country: NL | ISP: Moneroj s.r.o. | Threat: CLEAN | Reports: 0",
+      "timestamp": "2026-06-21T07:25:47.744599",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1059",
+      "technique_name": "Command & Scripting",
+      "tactic": "Execution",
+      "detected": true,
+      "score": 9,
+      "rule_triggered": "Suspicious activity detected",
+      "simulation_output": "whoami: debian\nid: uid=1000(debian) gid=1000(debian) groups=1000(debian),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plugdev),108(netdev),114(lpadmin),117(scanner),997(docker)\nuname -a: Linux debian 5.10.0-44-arm64 #1 SMP Debian 5.10.257-1 (2026-05-27) aarch64 GNU/Linux",
+      "timestamp": "2026-06-21T07:25:51.271309",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1055",
+      "technique_name": "Process Injection",
+      "tactic": "Defense Evasion",
+      "detected": true,
+      "score": 10,
+      "rule_triggered": "Suspicious activity detected",
+      "simulation_output": "Injection attempt simulated on PID 1",
+      "timestamp": "2026-06-21T07:25:54.796403",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1083",
+      "technique_name": "File & Directory Discovery",
+      "tactic": "Discovery",
+      "detected": true,
+      "score": 10,
+      "rule_triggered": "Suspicious activity detected",
+      "simulation_output": "Sensitive files discovered:\n/etc/passwd\n/etc/shadow\n/etc/hosts\n~/.ssh/",
+      "timestamp": "2026-06-21T07:25:58.303149",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "tactic": "Command & Control",
+      "detected": false,
+      "score": 0,
+      "rule_triggered": "Suspicious activity detected",
+      "simulation_output": "Tool download simulated from C2\nIP: 198.199.83.180 | Score: 0/100 | Country: US | ISP: DigitalOcean, LLC | Threat: CLEAN | Reports: 0",
+      "timestamp": "2026-06-21T07:26:02.357989",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1027",
+      "technique_name": "Obfuscated Files",
+      "tactic": "Defense Evasion",
+      "detected": true,
+      "score": 7,
+      "rule_triggered": "Suspicious activity detected",
+      "simulation_output": "Base64 obfuscated payload detected:\nbWFsaWNpb3VzX2NvbW1hbmQgLS1leGVjdXRl",
+      "timestamp": "2026-06-21T07:26:05.863319",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1057",
+      "technique_name": "Process Discovery",
+      "tactic": "Discovery",
+      "detected": false,
+      "score": 0,
+      "rule_triggered": "Suspicious activity detected",
+      "simulation_output": "Process enumeration: 144 processes discovered",
+      "timestamp": "2026-06-21T07:26:09.383904",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1082",
+      "technique_name": "System Info Discovery",
+      "tactic": "Discovery",
+      "detected": true,
+      "score": 10,
+      "rule_triggered": "Suspicious activity detected",
+      "simulation_output": "System info collected:\nLinux debian 5.10.0-44-arm64 #1 SMP Debian 5.10.257-1 (2026-05-27) aarch64 GNU/Linux",
+      "timestamp": "2026-06-21T07:26:12.901114",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1021",
+      "technique_name": "Remote Services",
+      "tactic": "Lateral Movement",
+      "detected": true,
+      "score": 9,
+      "rule_triggered": "Suspicious activity detected",
+      "simulation_output": "RDP/SSH lateral movement simulated\nIP: 194.165.16.11 | Score: 100/100 | Country: LT | ISP: Flyservers S.A. | Threat: CRITICAL | Reports: 187",
+      "timestamp": "2026-06-21T07:26:17.335012",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1048",
+      "technique_name": "Exfiltration Over Channel",
+      "tactic": "Exfiltration",
+      "detected": true,
+      "score": 7,
+      "rule_triggered": "Suspicious activity detected",
+      "simulation_output": "DNS exfiltration simulated to C2\nIP: 185.220.101.45 | Score: 100/100 | Country: DE | ISP: Network for Tor-Exit traffic. | Threat: CRITICAL | Reports: 126",
+      "timestamp": "2026-06-21T07:26:20.840787",
+      "notes": "Wazuh + AbuseIPDB"
+    },
+    {
+      "technique_id": "T1562",
+      "technique_name": "Impair Defenses",
+      "tactic": "Defense Evasion",
+      "detected": true,
+      "score": 8,
+      "rule_triggered": "Suspicious activity detected",
+      "simulation_output": "Firewall rule deletion simulated\nAV process termination simulated",
+      "timestamp": "2026-06-21T07:26:24.342983",
+      "notes": "Wazuh + AbuseIPDB"
+    }
+  ]
+}

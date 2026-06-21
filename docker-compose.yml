@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mock-wazuh:
+    build: .
+    command: uvicorn mock_wazuh.server:app --host 0.0.0.0 --port 55000
+    ports:
+      - "55000:55000"
+    networks:
+      - controlprobe-net
+
+  dashboard:
+    build: .
+    command: uvicorn dashboard.app:app --host 0.0.0.0 --port 8080
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./reports:/app/reports
+      - ./.env:/app/.env
+    depends_on:
+      - mock-wazuh
+    networks:
+      - controlprobe-net
+
+  runner:
+    build: .
+    command: python3 main.py
+    volumes:
+      - ./reports:/app/reports
+      - ./.env:/app/.env
+    depends_on:
+      - mock-wazuh
+    networks:
+      - controlprobe-net
+
+networks:
+  controlprobe-net:
+    driver: bridge

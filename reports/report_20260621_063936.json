@@ -1,0 +1,66 @@
+{
+  "report_id": "20260621_063936",
+  "generated_at": "2026-06-21T06:39:36.627183",
+  "summary": {
+    "coverage_percentage": 100.0,
+    "grade": "A \u2014 Excellent",
+    "total_techniques_tested": 5,
+    "detected": 5,
+    "missed": 0
+  },
+  "tactic_coverage": {
+    "Credential Access": 100.0,
+    "Discovery": 100.0,
+    "Persistence": 100.0,
+    "Defense Evasion": 100.0,
+    "Initial Access": 100.0
+  },
+  "gaps": [],
+  "results": [
+    {
+      "technique_id": "T1110",
+      "technique_name": "Brute Force",
+      "tactic": "Credential Access",
+      "detected": true,
+      "score": 7,
+      "timestamp": "2026-06-21T06:39:31.625943",
+      "notes": "Simulated in isolated environment"
+    },
+    {
+      "technique_id": "T1046",
+      "technique_name": "Network Service Scanning",
+      "tactic": "Discovery",
+      "detected": true,
+      "score": 9,
+      "timestamp": "2026-06-21T06:39:32.626200",
+      "notes": "Simulated in isolated environment"
+    },
+    {
+      "technique_id": "T1053",
+      "technique_name": "Scheduled Task",
+      "tactic": "Persistence",
+      "detected": true,
+      "score": 10,
+      "timestamp": "2026-06-21T06:39:33.626434",
+      "notes": "Simulated in isolated environment"
+    },
+    {
+      "technique_id": "T1070",
+      "technique_name": "Indicator Removal",
+      "tactic": "Defense Evasion",
+      "detected": true,
+      "score": 10,
+      "timestamp": "2026-06-21T06:39:34.626707",
+      "notes": "Simulated in isolated environment"
+    },
+    {
+      "technique_id": "T1078",
+      "technique_name": "Valid Accounts",
+      "tactic": "Initial Access",
+      "detected": true,
+      "score": 7,
+      "timestamp": "2026-06-21T06:39:35.626994",
+      "notes": "Simulated in isolated environment"
+    }
+  ]
+}
